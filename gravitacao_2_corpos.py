@@ -52,7 +52,7 @@ def grafico(_tlist,_dlist,title,xLabel,yLabel,_cor,aspect,visivel):
 	plt.xlabel(r'\raggedright{\textit{'+xLabel+'}}')
 	plt.ylabel(r'\raggedright{\textit{'+yLabel+'}}')
 	plt.plot(_tlist,_dlist,_cor,label = title)
-	plt.legend(loc = 'upper left')
+	plt.legend(loc = 'upper right')
 	extends = str(datetime.now().time()).replace(':','-')
 	plt.savefig(_imagName+extends.replace('.','-')+'.png',dpi=96)
 	plt.show()
@@ -85,14 +85,17 @@ y=np.zeros(t.size)
 vx=np.zeros(t.size)
 vy=np.zeros(t.size)
 e=np.zeros(t.size)
-r=np.zeros(t.size)
-v=np.zeros(t.size)
 
-x[0],y[0],vx[0],vy[0],e[0],r[0],v[0]=p1.x,p1.y,p1.vx,p1.vy,p1.e,(p1.x+p1.y),(p1.vx+p1.vy)
+
+x[0],y[0],vx[0],vy[0],e[0]=p1.x,p1.y,p1.vx,p1.vy,p1.e
+
 
 for i in range(t.size):
 	p1.move()
-	x[i],y[i],vx[i],vy[i],e[i],r[i],v[i]=p1.x,p1.y,p1.vx,p1.vy,p1.e,(p1.x+p1.y),(p1.vx+p1.vy)
+	x[i],y[i],vx[i],vy[i],e[i]=p1.x,p1.y,p1.vx,p1.vy,p1.e
+
+r = np.sqrt(x**2+y**2)
+v = np.sqrt(vx**2+vy**2)
 
 grafico(x,y,'Trajetoria','X(AU)','Y(AU)','r-',True,True)
 grafico(x,vx,'X/Vx','X (UA)','V (UA/ano)','m-',False,True)
