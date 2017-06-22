@@ -87,7 +87,7 @@ while k<4 :
 	acres.append(k)
 	k=k+0.1
 
-grafico(x, y,'excentricidade','X (AU)','Y (AU)','r.',True)
+grafico(acres, ex,'excentricidade','X (AU)','Y (AU)','r.',True)
 	
 print 'concluido'
 #end
